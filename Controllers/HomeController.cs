@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace JobPortal.Controllers
 {
-    public class HomeController : Controller //test 3
+    public class HomeController : Controller //test 4
     {
         /// <summary>
         /// Index page controler
