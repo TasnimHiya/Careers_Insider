@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace JobPortal.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller //test
     {
         public ActionResult Index()
         {
