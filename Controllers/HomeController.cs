@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobPortal.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace JobPortal.Controllers
 {
-    public class HomeController : Controller //test 5
+    public class HomeController : Controller 
     {
         /// <summary>
         /// Index page controler
