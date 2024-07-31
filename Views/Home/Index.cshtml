@@ -1,33 +1,40 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Careers Insider";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
-
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+<div class="d-center" style="display: flex; align-items: center;">
+    <div class="event-swiper" style="flex: 1; display: flex; justify-content: center;">
+        <img src="~/Content/Static/job3.png" style="max-width: 100%; height: auto; margin-left: 40px" />
     </div>
-</main>
+    <div class="container" style="flex: 1; padding-left: 20px;">
+        <div class="row justify-content-center align-items-center text-center" style="height: 100%; display: flex; flex-direction: column;">
+            <h1 class="h1-heading">Find your dream job now</h1>
+            <p>5 lakh+ jobs for you to explore</p>
+            <div class="d-search" style="width: 100%; margin-top: 20px;">
+                <div class="row">
+                    <div class="col-md-10" style="padding-right: 0;">
+                        <input type="text" class="text-search" id="searchString" placeholder="Enter designation / location" style="width: 100%;" />
+                    </div>
+                    <div class="col-md-2" style="padding-left: 0;">
+                        <button class="btn-search" id="searchButton" style="width: 100%; margin-left: 10px;">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchButton").click(function () {
+            var searchString = $("#searchString").val();
+            var url = "@Url.Action("Jobs", "Home")?search=" + encodeURIComponent(searchString);
+            window.location.href = url;
+        });
+    });
+</script>
+
