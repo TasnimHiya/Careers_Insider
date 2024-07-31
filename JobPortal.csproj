@@ -216,11 +216,23 @@
     <Content Include="Views\Home\Jobs.cshtml" />
     <Content Include="Views\Home\JobSeekerRegister.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Employer\AddJobVacancy.cshtml" />
+    <Content Include="Views\Employer\Applications.cshtml" />
+    <Content Include="Views\Employer\ChangePassword.cshtml" />
+    <Content Include="Views\Employer\ChatList.cshtml" />
+    <Content Include="Views\Employer\Index.cshtml" />
+    <Content Include="Views\Employer\JobDetails.cshtml" />
+    <Content Include="Views\Employer\JobSeekerProfile.cshtml" />
+    <Content Include="Views\Employer\Send-Message.cshtml" />
+    <Content Include="Views\Employer\SendMessage.cshtml" />
+    <Content Include="Views\Employer\UpdateProfile.cshtml" />
+    <Content Include="Views\Employer\UpdateVacancy.cshtml" />
+    <Content Include="Views\Employer\Vacancies.cshtml" />
+    <Content Include="Views\Employer\ViewProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Employer\" />
     <Folder Include="Views\JobSeeker\" />
   </ItemGroup>
   <ItemGroup>
