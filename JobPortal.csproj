@@ -177,6 +177,24 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\css\select2.min.css" />
+    <Content Include="Content\Static\7566.jpg" />
+    <Content Include="Content\Static\about.png" />
+    <Content Include="Content\Static\application.png" />
+    <Content Include="Content\Static\ci.png" />
+    <Content Include="Content\Static\concept.png" />
+    <Content Include="Content\Static\homePageJP.png" />
+    <Content Include="Content\Static\interview.png" />
+    <Content Include="Content\Static\job-seeker.png" />
+    <Content Include="Content\Static\job3.png" />
+    <Content Include="Content\Static\Job_Posting_Page.51e6ab7c156a002d438b.png" />
+    <Content Include="Content\Static\login.png" />
+    <Content Include="Content\Static\notification.png" />
+    <Content Include="Content\Static\reg.png" />
+    <Content Include="Content\Static\subscriptionWidget.d8278767.png" />
+    <Content Include="Content\Static\ten.jpg" />
+    <Content Include="Content\Static\vacancy.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -232,6 +250,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\MyCss\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\JobSeeker\" />
   </ItemGroup>
