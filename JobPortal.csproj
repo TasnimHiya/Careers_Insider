@@ -248,6 +248,13 @@
     <Content Include="Views\Employer\UpdateVacancy.cshtml" />
     <Content Include="Views\Employer\Vacancies.cshtml" />
     <Content Include="Views\Employer\ViewProfile.cshtml" />
+    <Content Include="Views\JobSeeker\AddEducationDetails.cshtml" />
+    <Content Include="Views\JobSeeker\AddSkill.cshtml" />
+    <Content Include="Views\JobSeeker\AppliedJobs.cshtml" />
+    <Content Include="Views\JobSeeker\Bookmarks.cshtml" />
+    <Content Include="Views\JobSeeker\ChangePassword.cshtml" />
+    <Content Include="Views\JobSeeker\ChatList.cshtml" />
+    <Content Include="Views\JobSeeker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
