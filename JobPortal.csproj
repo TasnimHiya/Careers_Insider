@@ -256,6 +256,13 @@
     <Content Include="Views\JobSeeker\ChangePassword.cshtml" />
     <Content Include="Views\JobSeeker\ChatList.cshtml" />
     <Content Include="Views\JobSeeker\Index.cshtml" />
+    <Content Include="Views\JobSeeker\JobDetails.cshtml" />
+    <Content Include="Views\JobSeeker\Jobs.cshtml" />
+    <Content Include="Views\JobSeeker\JobSeekerProfile.cshtml" />
+    <Content Include="Views\JobSeeker\Send-Message.cshtml" />
+    <Content Include="Views\JobSeeker\SendMessage.cshtml" />
+    <Content Include="Views\JobSeeker\UpdateEducationDetails.cshtml" />
+    <Content Include="Views\JobSeeker\UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
