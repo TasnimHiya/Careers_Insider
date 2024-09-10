@@ -12,7 +12,7 @@ namespace JobPortal.Repository
 
     public class PublicRepository
     {
-        /// <summary>
+        /// <summary> ///test
         /// Connection veriable
         /// </summary>
         private SqlConnection con;
