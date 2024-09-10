@@ -159,6 +159,7 @@
     <Compile Include="Models\JobSeekerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EmployerRepository.cs" />
+    <Compile Include="Repository\JobSeekerRepository.cs" />
     <Compile Include="Repository\PublicRepository.cs" />
   </ItemGroup>
   <ItemGroup>
