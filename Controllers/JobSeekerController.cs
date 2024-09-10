@@ -318,7 +318,239 @@ namespace JobPortal.Controllers
             catch(Exception ){
                 return new HttpStatusCodeResult(400);
             }
-        }    /// saad 321 no. line thake 
-       
+        } 
+             /// <summary>
+             /// Create and delete bookmark
+             /// </summary>
+             /// <param name="id"></param>
+             /// <returns></returns>
+        [HttpGet]
+        public ActionResult Bookmark(int id)
+        {
+            try
+            {
+                JobSeekerRepository jobSeekerRepository = new JobSeekerRepository();
+                Bookmark obj = new Bookmark
+                {
+                    JobId = id,
+                    SeekerId = Convert.ToInt32(Session["SeekerId"]),
+                };
+                if (jobSeekerRepository.Bookmark(obj))
+                {
+                    return new HttpStatusCodeResult(200);
+                }
+                return new HttpStatusCodeResult(400);
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+                return View("Error");
+            }
+        }
+        /// <summary>
+        /// Display job details 
+        /// </summary>
+        /// <param name="id">Job id</param>
+        /// <returns></returns>
+        public ActionResult JobDetails(int id)
+        {
+            try
+            {
+                int seekerId = Convert.ToInt32(Session["SeekerId"]);
+                PublicRepository publicRepository = new PublicRepository();
+                JobSeekerRepository jobSeekerRepository = new JobSeekerRepository();
+                var jobDetails = publicRepository.GetJobDetails().Find(model => model.JobID == id);
+                if (jobDetails != null)
+                {
+                    var bookmarks = jobSeekerRepository.GetBookmarks(seekerId);
+                    var appliedJobs = jobSeekerRepository.GetJobApplications(seekerId);
+                    bool isSaved = bookmarks.Any(jobId => jobId.JobId == id);
+                    bool isApplied = appliedJobs.Any(jobId => jobId.JobId == id);
+                    ViewBag.isSaved = isSaved;
+                    ViewBag.isApplied = isApplied;
+                }
+
+                return View(jobDetails);
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+                return View("Error");
+            }
+
+        }
+        /// <summary>
+        /// View applied jobs and check the status
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AppliedJobs()
+        {
+            JobSeekerRepository jobSeekerRepository = new JobSeekerRepository();
+            int id = Convert.ToInt32(Session["SeekerId"]);
+            return View(jobSeekerRepository.GetJobApplications(id));
+        }
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        /// <summary>
+        /// Change password job seeker
+        /// </summary>
+        /// <param name="oldPassword">Old password</param>
+        /// <param name="newPassword">New password</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult ChangePassword(string oldPassword, string newPassword)
+        {
+            try
+            {
+                JobSeekerRepository jobSeekerRepository = new JobSeekerRepository();
+                if (jobSeekerRepository.ChangePassword(oldPassword, newPassword, Convert.ToInt32(Session["SeekerId"])))
+                {
+                    TempData["Message"] = "Password changed";
+                }
+                else
+                {
+                    TempData["Message"] = "Wrong password";
+                    return View();
+                }
+                return RedirectToAction("JobSeekerProfile");
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+                return View("Error");
+            }
+        }
+        public ActionResult AddSkill()
+        {
+            PublicRepository publicRepository = new PublicRepository();
+            int seekerId = Convert.ToInt32(Session["SeekerId"]);
+            var userSkills = publicRepository.JobSeekerSkills(seekerId).Select(js => js.SkillId).ToList();
+            var skills = publicRepository.DisplaySkills().Where(skill => !userSkills.Contains(skill.SkillId)).ToList();
+            return View(skills);
+        }
+
+        [HttpPost]
+        public ActionResult AddSkill(int[] SkillId)
+        {
+            JobSeekerRepository jobSeekerRepository = new JobSeekerRepository();
+            try
+            {
+                foreach (int skillId in SkillId)
+                {
+                    if (jobSeekerRepository.AddSkill(skillId, Convert.ToInt32(Session["SeekerId"])))
+                    {
+                        TempData["Message"] = "Skills added";
+                    }
+                }
+                return RedirectToAction("JobSeekerProfile");
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+                return View("Error");
+            }
+        }
+        /// <summary>
+        /// View saved jobs
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Bookmarks()
+        {
+            try
+            {
+                JobSeekerRepository jobSeekerRepository = new JobSeekerRepository();
+                var bookmarks = jobSeekerRepository.GetBookmarks(Convert.ToInt32(Session["SeekerId"]));
+                return View(bookmarks);
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+                return View("Error");
+            }
+        }
+        /// <summary>
+        /// Send message
+        /// </summary>
+        /// <param name="id">Employer id</param>
+        /// <returns></returns>
+        public ActionResult SendMessage(int id)
+        {
+            try
+            {
+                PublicRepository publicRepository = new PublicRepository();
+                int seekerId = (int)Session["SeekerId"];
+                var chats = publicRepository.ReadMessage(seekerId, id);
+                if (chats.Count == 0)
+                {
+                    EmployerRepository repo = new EmployerRepository();
+                    var employer = repo.Employers().Find(model => model.EmployerID == id);
+                    return View("Send-Message", employer);
+                }
+                return View(chats);
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+                return View("Error");
+            }
+        }
+        /// <summary>
+        /// Send message
+        /// </summary>
+        /// <param name="id">Employer id</param>
+        /// <param name="message">Message</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult SendMessage(int id, string message)
+        {
+            try
+            {
+                PublicRepository publicRepository = new PublicRepository();
+                int seekerId = (int)Session["SeekerId"];
+                char sender = 'J';
+                if (publicRepository.SendMessage(seekerId, id, message, sender))
+                {
+                    return new HttpStatusCodeResult(200);
+                }
+                return new HttpStatusCodeResult(400);
+            }
+            catch (Exception)
+            {
+                return new HttpStatusCodeResult(500);
+            }
+        }
+        /// <summary>
+        /// Chat list of the job seeker
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ChatList()
+        {
+            try
+            {
+                JobSeekerRepository jobSeekerRepository = new JobSeekerRepository();
+                int seekerId = (int)Session["SeekerId"];
+                return View(jobSeekerRepository.ChatList(seekerId));
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+                return View("Error");
+            }
+        }
+        /// <summary>
+        /// Logout Employer
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Logout()
+        {
+            Session["SeekerId"] = null;
+            Session["SeekerImage"] = null;
+            Session["SeekerUsername"] = null;
+            TempData["Message"] = "Logouted";
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
