@@ -121,7 +121,101 @@ namespace JobPortal.Models
         public List<EducationDetails> EducationDetails { get; set; }
         public List <JobSeekerSkills> Skills { get; set; }
         public List<Skills> AllSkills { get; set; }
-    } // 125 no. saad 
-   
+    } 
+
+    /// <summary>
+    /// Job details model
+    /// </summary>
+    public class JobDetails
+    {
+        public int JobID { get; set; }
+        public int EmployerID { get; set; }
+        public string JobTitle { get; set; }
+        public string Description { get; set; }
+        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
+        public string Location { get; set; }
+        public decimal Salary { get; set; }
+        public string EmploymentType { get; set; }
+        public DateTime ApplicationDeadline { get; set; }
+        public bool IsPublished { get; set; }
+        public string CompanyName { get; set; }
+        public string OfficialEmail { get; set; }
+        public string Email { get; set; }
+        public string ContactPhone { get; set; }
+        public string Website { get; set; }
+        public string EmployerName { get; set; }
+        public string Designation { get; set; }
+        public byte[] CompanyLogo { get; set; }
+        public int NumberOfApplications { get; set; }
+        public int NumberOfViews { get; set; }
+    }
+
+    /// <summary>
+    /// View status of the job
+    /// </summary>
+    public class ViewJob
+    {
+        [Key]
+        public int JobId { get; set; }
+        public int SeekerId { get; set; }
+        public DateTime ViewDate { get; set; }
+    }
+    /// <summary>
+    /// Bookmark model
+    /// </summary>
+    public class Bookmark
+    {
+        [Key]
+        public int BookmarkId { get; set; }
+        public int JobId { get; set; }
+        public int SeekerId { get; set; }
+        public string JobTitle { get; set; }
+    }
+    /// <summary>
+    /// View model for front page
+    /// </summary>
+    public class Index
+    {
+        public List<JobDetails> JobDetails { get; set; }
+        public List<JobApplication> JobApplications { get; set; }
+    }
+    /// <summary>
+    /// Chat message model
+    /// </summary>
+    public class ChatMessage
+    {
+        public int SeekerID { get; set; }
+        public int EmployerID { get; set; }
+        public int ChatID { get; set; }
+        public int MessageId { get; set; }
+        public string Message { get; set; }
+        public string SeekerName { get; set; }
+        public string CompanyName { get; set; }
+        public DateTime DateAndTime { get; set; }
+        public char Sender { get; set; }
+    }
+    /// <summary>
+    /// Chat list
+    /// </summary>
+    public class ChatList
+    {
+        public int ChatID { get; set; }
+        public int SeekerID { get; set; }
+        public int EmployerID { get; set; }
+        public string SeekerName { get; set; }
+        public string CompanyName { get; set; }
+    }
+    public class ContactMessage
+    {
+        public int ContactId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string Message { get; set; }
+        public DateTime DateTime { get; set; }
+    }
+
 
 }
