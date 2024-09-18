@@ -393,7 +393,7 @@ namespace JobPortal.Controllers
         {
             return View();
         }
-        /// <summary>
+        /// <summary> ///
         /// Change password job seeker
         /// </summary>
         /// <param name="oldPassword">Old password</param>
