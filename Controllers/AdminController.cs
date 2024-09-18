@@ -9,7 +9,6 @@ using JobPortal.Models;
 using JobPortal.Repository;
 using Microsoft.Ajax.Utilities;
 
-//test 2
 namespace JobPortal.Controllers
 {
     [Authorize]
