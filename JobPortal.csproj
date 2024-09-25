@@ -184,6 +184,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
+    <Content Include="Content\MyCss\Site.css" />
     <Content Include="Content\Static\7566.jpg" />
     <Content Include="Content\Static\about.png" />
     <Content Include="Content\Static\application.png" />
@@ -220,6 +221,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\MyScripts\main.js" />
+    <Content Include="Scripts\MyScripts\script.js" />
+    <Content Include="Scripts\MyScripts\select2.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -284,10 +288,11 @@
     <Content Include="Views\Admin\UpdateCategory.cshtml" />
     <Content Include="Views\Admin\VerifyEmployer.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <Content Include="Views\JobSeeker\ContactUs.cshtml" />
+    <Content Include="Views\Shared\EmployerLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\MyCss\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
